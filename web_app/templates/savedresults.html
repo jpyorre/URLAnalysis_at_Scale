@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+<table>
+    <tr>
+        <th>URL</th>
+        <th>Domain</th>
+        <th>Score</th>
+        <th>Reason</th>
+        <th>URL Length</th>
+        <th>Levenshtein Matches</th>
+        <th>Punycode Matches</th>
+        <th>Possible Actual Words</th>
+    </tr>
+    {% for dictionary in url_results %}
+    <tr>
+        <td>{{ dictionary['url'] }}</td>
+        <td>{{ dictionary['domain'] }}</td>
+        <td>{{ dictionary['score'] }}</td>
+        <td>{{ dictionary['reason'] }}</td>
+        <td>{{ dictionary['url_length'] }}</td>
+        <td>{{ dictionary['levenshtein_match'] }}</td>
+        <td>{{ dictionary['punycode_match'] }}</td>
+        <td>{{ dictionary['possible_actual_words'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

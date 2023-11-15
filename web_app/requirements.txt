@@ -1,0 +1,12 @@
+pymongo
+pyspellchecker
+spacy
+fastapi
+nltk
+fuzzywuzzy
+Levenshtein
+investigate
+python-multipart
+scikit-learn
+nltk
+uvicorn

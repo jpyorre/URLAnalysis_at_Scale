@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block body %}
+<ul>
+    <a href="{{ url_for('download_csv') }}" download="results.csv"><button class="submit-button">Download Results</button></a> | {% for result in url_results %}
+        {% if 'Execution Time' in result %}
+        <strong>Execution Time:</strong> {{ result['Execution Time'] }}
+        {% endif %}
+    {% endfor %}
+ 
+    
+</ul>
+<table>
+    <tr>
+        <th>URL</th>
+        <th>Domain</th>
+        <th>Score</th>
+        <th>Reason</th>
+        <th>URL Length</th>
+        <th>Levenshtein Matches</th>
+        <th>Punycode Matches</th>
+        <th>Possible Actual Words</th>  
+    </tr>
+    {% for item in url_results %}
+        {% for dictionary in item %}
+        <tr>
+            <td>{{ dictionary['url'] }}</td>
+            <td>{{ dictionary['domain'] }}</td>
+            <td>{{ dictionary['score'] }}</td>
+            <td>{{ dictionary['reason'] }}</td>
+            <td>{{ dictionary['url_length'] }}</td>
+
+            <td>
+                {% if 'levenshtein_match' in dictionary %}
+                    <ul>
+                        {% for match in dictionary['levenshtein_match'] %}
+                            <li>{{ match['match'] }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </td>
+            <td>
+                {% if 'punycode_match' in dictionary %}
+                    <ul>
+                        {% for match in dictionary['punycode_match'] %}
+                            <li>{{ match['match'] }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </td>
+
+            <td>{{ dictionary['possible_actual_words'] | join(', ') }}</td>          
+        </tr>
+        {% endfor %}
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,146 @@
+body {
+    background-color: #FFF;
+    color: #000;
+    font-family: Arial, sans-serif; /* Change to the desired font family */
+    font-size: 12px; /* Change to the desired font size */
+}
+#result {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 20px;
+    background-color: #aaaaaa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #ccc;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Background color for the table */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #333;
+    color: #fff; /* Header text color */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row background color */
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.file-label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#csvFile {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.progress-container {
+    display: none;
+    width: 100%;
+    height: 5px;
+    background-color: #dddddd;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #007bff;
+    transition: width 0.5s;
+}
+
+.navbar {
+    background-color: #3498db; /* Change to the desired background color */
+  }
+
+.navbar-nav .nav-link {
+color: #000000; /* Change to the desired text color */
+font-family: Arial, sans-serif; /* Change to the desired font family */
+font-size: 16px; /* Change to the desired font size */
+display: flex;
+list-style: none; /* Remove default list styles */
+padding: 0; /* Remove default padding */
+}
+
+.navbar {
+padding: 10px; /* Change to the desired padding value */
+margin-bottom: 20px; /* Change to the desired margin value */
+}
+
+.navbar-toggler {
+background-color: #ffffff; /* Change to the desired button background color */
+border: 1px solid #3498db; /* Change to the desired button border color */
+color: #3498db; /* Change to the desired button text color */
+}
+
+.nav-item {
+    margin-right: 10px; /* Adjust the spacing between items as needed */
+}
+
+.nav-link {
+    text-decoration: none; /* Remove underline from links */
+}
+
+<style>
+    .download-button {
+        background-color: #008CBA; /* Set the background color */
+        border: none;
+        color: white; /* Set the text color */
+        padding: 10px 20px; /* Adjust padding for better spacing */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px; /* Add rounded corners */
+    }
+
+    .download-button:hover {
+        background-color: #005F7F; /* Change color on hover */
+    }
+</style>
