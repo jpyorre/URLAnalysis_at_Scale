@@ -9,7 +9,7 @@ Note: This was built using multiple methods for optimization. One version of thi
 This was built to run on python 3.11
 
 ## Note:
-Currently, the function that reads in a CSV file is hard coded to a specific file layout that has two columns. The columns are labeled: 'url' and 'label'. The function that reads this in is called `get_urls` in `/lib/collect_urls`.
+Currently, the function that reads in a CSV file is hard coded to a specific file layout that has two columns. The columns are labeled: 'url' and 'label'. The function that reads this in is called `get_urls()` in `/lib/collect_urls`.
 
 Soon, I'll adjust this to be more flexible. I'll either:
 
@@ -28,7 +28,7 @@ contents = await file.read() # this line reads in the file
 lines = contents.decode("utf-8").split('\n')    # this line takes the csv and puts each line into a list
 raw_urls = collect_urls.get_urls(lines) # send the list to the collect_urls function
 ```
-Modify the `collect_urls` function to read your data correctly:
+You can then modify the `collect_urls` function to read your data correctly.
 
 ## Setup:
 
