@@ -1,0 +1,6 @@
+possible_actual_words,url,dga,reason,levenshtein_match,punycode_match,domain,tokens,url_length,score
+"svision, online, mgfi, administrator, components, classes",svision-online.de/mgfi/administrator/components/com_babackup/classes/fx29id1.txt,{},ML SVM Model,,,svision-online.de,"svision, online, de, mgfi, administrator, components, com_babackup, classes, fx29id1, txt",71,-1
+"testbored, testing",testbored.com/testing,{},benign,,,testbored.com,"testbored, com, testing",19,0
+"benkofmaerical, benking, wilmart",benkofmaerical.com/benking/wilmart,{},levenshtein,,,benkofmaerical.com,"benkofmaerical, com, benking, wilmart",31,-1
+example,xn--example-c3d.com,{},DGA Detection,,,xn--example-c3d.com,"xn, , example, c3d, com",15,-1
+diaryofagameaddict,diaryofagameaddict.com,{},benign,,,diaryofagameaddict.com,"diaryofagameaddict, com",21,0

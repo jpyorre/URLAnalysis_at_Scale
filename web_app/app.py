@@ -8,6 +8,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import FileResponse
 from starlette.requests import Request
+from io import StringIO
+import csv, re
 
 client = MongoClient("mongodb://localhost:27017/")  # Replace with your MongoDB connection URL
 db = client["urlresults"]  # Replace with your database name
@@ -40,6 +42,27 @@ async def index_form(request: Request):
 def check_existing_url(url): # Check if the URL already exists in the database
     existing_data = collection.find_one({"url": url}, {"_id": 0})
     return existing_data
+
+def extract_urls_from_csv(contents):
+    already_seen = []
+    contents_str = contents.decode("utf-8") # Convert the contents to a string
+    csv_file = StringIO(contents_str) # Create a CSV reader for the contents
+    csv_reader = csv.reader(csv_file)
+    # extracted_urls = [] # store extracted URLs
+    extracted_urls = set() # store extracted URLs
+    # url_pattern = re.compile(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+') # match URLs
+    url_pattern = re.compile(r'(?:http[s]?://)?(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\.[a-zA-Z]{2,}')
+    
+    for row in csv_reader:
+        for cell in row:
+            urls = url_pattern.findall(cell) # Search for URLs in the current cell
+            if urls:
+                if urls not in already_seen:
+                    # print(urls)
+                    extracted_urls.update(urls)
+                    already_seen.append(urls)
+    unique_extracted_urls = list(extracted_urls)
+    return unique_extracted_urls
 
 @app.post('/analyze_urls_api')
 async def analyze_urls_api(file: UploadFile, request: Request):
@@ -86,11 +109,15 @@ async def processurls(file: UploadFile, request: Request):
     start_time = time.time()
     if file.content_type == "text/csv":
         contents = await file.read()
+        # extracted_urls = extract_urls_from_csv(contents)
+        # print(extracted_urls)
         lines = contents.decode("utf-8").split('\n')
         urls_to_lookup = []
         results_already_in_db = []
+        # raw_urls = collect_urls.get_urls(extracted_urls)
         raw_urls = collect_urls.get_urls(lines)
         popularity_results = urlcleaner.remove_popular_domains(raw_urls)
+        # popularity_results = urlcleaner.remove_popular_domains(extracted_urls)
         urls_on_popular_domains = []
         urls_on_un_popular_domains = []
 

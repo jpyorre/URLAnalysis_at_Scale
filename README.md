@@ -8,6 +8,28 @@ Note: This was built using multiple methods for optimization. One version of thi
 
 This was built to run on python 3.11
 
+## Note:
+Currently, the function that reads in a CSV file is hard coded to a specific file layout that has two columns. The columns are labeled: 'url' and 'label'. The function that reads this in is called `get_urls` in `/lib/collect_urls`.
+
+Soon, I'll adjust this to be more flexible. I'll either:
+
+1. Specify that uploaded CSV files need to be in a certain format
+
+or
+
+2. Do some sort of regex magic to find any column that contains URLs or domains.
+
+Just note that until I get to it, you may need to adjust the `get_urls()` function to open your CSV correctly. It's a pretty easy thing to change.
+
+It starts in the app.py file, under one of the two routes (`/analyze_urls` or `analyze_urls_api`)
+
+```
+contents = await file.read() # this line reads in the file
+lines = contents.decode("utf-8").split('\n')    # this line takes the csv and puts each line into a list
+raw_urls = collect_urls.get_urls(lines) # send the list to the collect_urls function
+```
+Modify the `collect_urls` function to read your data correctly:
+
 ## Setup:
 
 Install the en_core_web_sm to use the check_for_words_without_spaces function (must only be done once)
